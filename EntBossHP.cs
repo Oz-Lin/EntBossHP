@@ -93,7 +93,7 @@ namespace EntBossHP
             if (!activator.IsValid || !ClientLastShootHitBox.ContainsKey(player(activator)))
                 return HookResult.Continue;
 
-            ClientLastShootHitBox[player(activator)] = Server.EngineTime;
+            ClientLastShootHitBox[player(activator)] = (float)Server.EngineTime;
 
             return HookResult.Continue;
         }
@@ -139,14 +139,14 @@ namespace EntBossHP
                 }
             }
 
-            ClientLastShootHitBox[player(activator)] = Server.EngineTime;
+            ClientLastShootHitBox[player(activator)] = (float)Server.EngineTime;
 
             return HookResult.Continue;
         }
 
         void Print_BHUD(CCSPlayerController client, CEntityInstance entity, string name, int hp)
         {
-            CurrentTime = Server.EngineTime;
+            CurrentTime = (float)Server.EngineTime;
 
             if (ClientLastShootHitBox[client] > CurrentTime - 3.0f && LastForceShowBossHP + 0.1f < CurrentTime || hp == 0)
             {
